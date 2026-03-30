@@ -424,15 +424,12 @@ a {
     padding: 24px 20px 48px;
   }
   .maven-right {
-    min-height: 0;
+    height: calc(100vw - 40px) !important;
+    max-height: 400px !important;
+    padding: 0 20px !important;
   }
   .maven-right img {
-    position: relative;
-    border-radius: 16px;
-    margin: 0 20px;
-    width: calc(100% - 40px);
-    aspect-ratio: 1/1;
-    height: auto;
+    border-radius: 16px !important;
   }
 }
 
