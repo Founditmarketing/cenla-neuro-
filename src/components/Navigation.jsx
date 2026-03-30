@@ -112,7 +112,6 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
           <button onClick={() => setMenuOpen(false)} style={{ fontSize: 32, color: "var(--cream)", background: "none", border: "none", cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", width: 44, height: 44 }}>✕</button>
         </div>
 
-        {/* Link Matrix */}
         <div style={{ flex: 1, overflowY: "auto", padding: "12px 24px", display: "flex", flexDirection: "column" }}>
           {[{ l: "Home", p: "/" }, { l: "Physicians", p: "/physicians" }, { l: "Comprehensive Services", p: "/services" }, { l: "Clinical Research", p: "/clinical-studies" }].map(i => (
             <button 
@@ -120,38 +119,35 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
               className="ml" 
               onClick={() => { navigate(i.p); setMenuOpen(false); }}
             >
-              <span style={{ fontSize: 24, fontWeight: 500, color: "var(--cream)", fontFamily: "'Playfair Display', serif" }}>{i.l}</span>
-              <ArrowRight size={20} color="var(--gold)" style={{ opacity: 0.6 }} />
+              <span style={{ fontSize: 20, fontWeight: 500, color: "var(--cream)", fontFamily: "'Playfair Display', serif" }}>{i.l}</span>
+              <ArrowRight size={18} color="var(--gold)" style={{ opacity: 0.6 }} />
             </button>
           ))}
         </div>
 
         {/* Intelligence Data Block */}
-        <div style={{ padding: "32px 24px 48px", background: "rgba(0,0,0,0.25)", borderTop: "1px solid rgba(184,160,100,0.15)" }}>
-          <p style={{ fontSize: 12, textTransform: "uppercase", letterSpacing: 1.5, color: "var(--gold)", fontWeight: 600, marginBottom: 20 }}>Clinical Information</p>
+        <div style={{ padding: "20px 24px", background: "rgba(0,0,0,0.25)", borderTop: "1px solid rgba(184,160,100,0.15)" }}>
+          <p style={{ fontSize: 11, textTransform: "uppercase", letterSpacing: 1.5, color: "var(--gold)", fontWeight: 600, marginBottom: 16 }}>Clinical Information</p>
           
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 16 }}>
-            <MapPin size={18} color="var(--gold)" style={{ marginTop: 2, flexShrink: 0 }} />
-            <div style={{ color: "var(--text-light)", fontSize: 15, lineHeight: 1.5, fontWeight: 300 }}>
-              Address to be determined <br/>Central Louisiana Region
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 12 }}>
+            <MapPin size={16} color="var(--gold)" style={{ marginTop: 2, flexShrink: 0 }} />
+            <div style={{ color: "var(--text-light)", fontSize: 13, lineHeight: 1.5, fontWeight: 300 }}>
+              3311 Prescott Road, Suite 216 <br/>Alexandria, LA 71301
             </div>
           </div>
           
-          <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 32 }}>
-            <Clock size={18} color="var(--gold)" style={{ marginTop: 2, flexShrink: 0 }} />
-            <div style={{ color: "var(--text-light)", fontSize: 15, lineHeight: 1.5, fontWeight: 300 }}>
+          <div style={{ display: "flex", alignItems: "flex-start", gap: 14, marginBottom: 20 }}>
+            <Clock size={16} color="var(--gold)" style={{ marginTop: 2, flexShrink: 0 }} />
+            <div style={{ color: "var(--text-light)", fontSize: 13, lineHeight: 1.5, fontWeight: 300 }}>
               Mon - Fri: 8:00 AM - 5:00 PM<br/>Sat - Sun: Closed
             </div>
           </div>
           
           {/* Touch-Target Global CTAs */}
           <div style={{ display: "flex", gap: 12, flexDirection: "column" }}>
-            <button onClick={() => { navigate('/contact'); setMenuOpen(false); }} style={{ width: "100%", padding: "16px", background: "var(--gold)", color: "var(--navy)", fontWeight: 700, fontSize: 16, border: "none", borderRadius: 8, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, cursor: "pointer", transition: "transform 0.2s" }}>
+            <button onClick={() => { navigate('/contact'); setMenuOpen(false); }} style={{ width: "100%", padding: "14px", background: "var(--gold)", color: "var(--navy)", fontWeight: 700, fontSize: 14, border: "none", borderRadius: 8, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, cursor: "pointer", transition: "transform 0.2s" }}>
               Request Appointment
             </button>
-            <a href="tel:3184430490" style={{ width: "100%", padding: "16px", background: "transparent", color: "var(--cream)", border: "1.5px solid rgba(255,255,255,0.2)", borderRadius: 8, display: "flex", justifyContent: "center", alignItems: "center", gap: 8, cursor: "pointer", textDecoration: "none", fontWeight: 600, transition: "background 0.2s" }}>
-              <PhoneCall size={18} /> (318) 443-0490
-            </a>
           </div>
         </div>
       </div>
