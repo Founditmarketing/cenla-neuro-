@@ -148,12 +148,6 @@ const HomePage = () => {
                     onMouseLeave={() => window.innerWidth > 968 && setActivePhysician(null)}
                     onClick={() => {
                       if (window.innerWidth <= 968) {
-                        if (activePhysician !== i) {
-                          setActivePhysician(i);
-                        } else {
-                          navigate("/physicians");
-                        }
-                      } else {
                         navigate("/physicians");
                       }
                     }}
@@ -178,9 +172,31 @@ const HomePage = () => {
                             <div style={{ fontSize: 15, color: "rgba(255,255,255,0.8)", lineHeight: 1.6, marginBottom: 16, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical" }}>
                               {d.bio}
                             </div>
-                            <div style={{ fontSize: 14, color: "var(--cream)", fontWeight: 600, display: "flex", alignItems: "center", gap: 6 }}>
-                                View Full Profile <ArrowRight size={16} color="var(--gold)" />
-                            </div>
+                            <button 
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                navigate("/physicians");
+                              }}
+                              style={{ 
+                                marginTop: 8, 
+                                padding: "10px 24px", 
+                                background: "var(--gold)", 
+                                color: "var(--text-dark)", 
+                                border: "none", 
+                                borderRadius: 100, 
+                                fontWeight: 600, 
+                                fontSize: 14, 
+                                cursor: "pointer", 
+                                display: "inline-flex", 
+                                alignItems: "center", 
+                                gap: 8,
+                                transition: "transform 0.2s ease"
+                              }}
+                              onMouseEnter={e => e.currentTarget.style.transform = "scale(1.05)"}
+                              onMouseLeave={e => e.currentTarget.style.transform = "scale(1)"}
+                            >
+                                View Full Profile <ArrowRight size={16} />
+                            </button>
                         </div>
                       </div>
                     </div>
