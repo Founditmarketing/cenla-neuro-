@@ -126,7 +126,7 @@ const HomePage = () => {
            </div>
         </div>
         
-        <div className="maven-right" style={{ padding: "0 40px 0 0", height: 600 }}>
+        <div className="maven-right" style={{ padding: "0 40px 0 0", height: 800 }}>
            <FadeIn direction="left" delay={0.2} style={{ height: "100%", width: "100%", position: "relative", borderRadius: 32, overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.06)" }}>
               {expertiseImages.map((imgSrc, i) => (
                  <img key={imgSrc} src={imgSrc} alt="NeuroCenla Feature" loading="lazy" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center", transition: "opacity 0.6s ease", opacity: hoveredImage === i ? 1 : 0 }} />
@@ -352,8 +352,9 @@ const HomePage = () => {
         
       </section>
 
-      <section className="sec sd">
-        <div className="si">
+      <section className="sec sd" style={{ position: "relative", overflow: "hidden" }}>
+        <img src="/neurocenlanewlogo.png" alt="" style={{ position: "absolute", right: -80, top: "50%", transform: "translateY(-50%)", width: 500, opacity: 0.04, pointerEvents: "none" }} />
+        <div className="si" style={{ position: "relative", zIndex: 1 }}>
           <FadeIn>
             <div className="ey"><span className="el" />Patient Stories</div>
             <h2 className="st">What Our Patients Say</h2>
