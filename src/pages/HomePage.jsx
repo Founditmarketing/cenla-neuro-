@@ -261,13 +261,59 @@ const HomePage = () => {
           
           <div className="parsley-right" style={{ flex: 1, minWidth: 0 }}>
             <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "40px calc(50% - 180px) 80px", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
-              {[...services.slice(0, 6), ...services.slice(0, 6), ...services.slice(0, 6), ...services.slice(0, 6)].map((s, i) => {
-                const isSpotlight = activeServiceId === `card-${i}`;
+              {[...[...services.slice(0, 6), { isViewAll: true, id: "view-all" }], ...[...services.slice(0, 6), { isViewAll: true, id: "view-all" }], ...[...services.slice(0, 6), { isViewAll: true, id: "view-all" }], ...[...services.slice(0, 6), { isViewAll: true, id: "view-all" }]].map((s, i) => {
+                const uniqueId = s.isViewAll ? `view-all-${i}` : `card-${i}`;
+                const isSpotlight = activeServiceId === uniqueId;
+
+                if (s.isViewAll) {
+                  return (
+                    <FadeIn key={uniqueId} delay={0.6} style={{ flexShrink: 0 }}>
+                      <div 
+                        className="service-card-node"
+                        data-id={uniqueId}
+                        style={{ 
+                          backgroundColor: "var(--navy)", 
+                          border: isSpotlight ? "2px solid var(--gold)" : "1px solid rgba(0,0,0,0)", 
+                          borderRadius: 20, 
+                          width: 360, 
+                          height: 520, 
+                          padding: 36, 
+                          display: "flex", 
+                          flexDirection: "column", 
+                          alignItems: "center",
+                          justifyContent: "center",
+                          textAlign: "center",
+                          cursor: "pointer", 
+                          transition: "all .4s cubic-bezier(0.25, 1, 0.5, 1)",
+                          transform: isSpotlight ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
+                          boxShadow: isSpotlight ? "0 24px 48px rgba(0,0,0,0.2)" : "none",
+                          scrollSnapAlign: "center"
+                        }} 
+                        onClick={() => navigate("/services")}
+                        onMouseEnter={e => {
+                          e.currentTarget.style.borderColor = "var(--gold)";
+                        }}
+                        onMouseLeave={e => {
+                          e.currentTarget.style.borderColor = isSpotlight ? "var(--gold)" : "rgba(0,0,0,0)";
+                        }}
+                      >
+                        <div style={{ width: 80, height: 80, borderRadius: "50%", background: "rgba(184,160,100,0.15)", color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, transition: "all .4s ease" }}>
+                          <ArrowRight size={32} strokeWidth={1.5} />
+                        </div>
+                        <h3 style={{ fontFamily: "inherit", fontSize: 28, fontWeight: 600, color: "var(--cream)", marginBottom: 16 }}>View All<br/>Services</h3>
+                        <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, fontWeight: 300 }}>
+                          Explore our complete directory of specialized neurological treatments.
+                        </p>
+                      </div>
+                    </FadeIn>
+                  );
+                }
+
                 return (
-                  <FadeIn key={`${s.id}-${i}`} delay={Math.min(i * 0.1, 0.4)} style={{ flexShrink: 0 }}>
+                  <FadeIn key={uniqueId} delay={Math.min((i % 7) * 0.1, 0.4)} style={{ flexShrink: 0 }}>
                     <div 
                       className="service-card-node"
-                      data-id={`card-${i}`}
+                      data-id={uniqueId}
                       style={{ 
                         backgroundColor: "#ffffff", 
                         border: isSpotlight ? "2px solid var(--gold)" : "1px solid rgba(0,0,0,0.06)", 
@@ -305,47 +351,6 @@ const HomePage = () => {
                   </FadeIn>
                 );
               })}
-              
-              {/* Distinct "View All Services" Routing Card */}
-              <FadeIn delay={0.6} style={{ flexShrink: 0 }}>
-                <div 
-                  className="service-card-node"
-                  data-id="view-all"
-                  style={{ 
-                    backgroundColor: "var(--navy)", 
-                    border: activeServiceId === "view-all" ? "2px solid var(--gold)" : "1px solid rgba(0,0,0,0)", 
-                    borderRadius: 20, 
-                    width: 360, 
-                    height: 520, 
-                    padding: 36, 
-                    display: "flex", 
-                    flexDirection: "column", 
-                    alignItems: "center",
-                    justifyContent: "center",
-                    textAlign: "center",
-                    cursor: "pointer", 
-                    transition: "all .4s cubic-bezier(0.25, 1, 0.5, 1)",
-                    transform: activeServiceId === "view-all" ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
-                    boxShadow: activeServiceId === "view-all" ? "0 24px 48px rgba(0,0,0,0.2)" : "none",
-                    scrollSnapAlign: "center"
-                  }} 
-                  onClick={() => navigate("/services")}
-                  onMouseEnter={e => {
-                    e.currentTarget.style.borderColor = "var(--gold)";
-                  }}
-                  onMouseLeave={e => {
-                    e.currentTarget.style.borderColor = activeServiceId === "view-all" ? "var(--gold)" : "rgba(0,0,0,0)";
-                  }}
-                >
-                  <div style={{ width: 80, height: 80, borderRadius: "50%", background: "rgba(184,160,100,0.15)", color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 24, transition: "all .4s ease" }}>
-                    <ArrowRight size={32} strokeWidth={1.5} />
-                  </div>
-                  <h3 style={{ fontFamily: "inherit", fontSize: 28, fontWeight: 600, color: "var(--cream)", marginBottom: 16 }}>View All<br/>Services</h3>
-                  <p style={{ fontSize: 16, color: "rgba(255,255,255,0.7)", lineHeight: 1.6, fontWeight: 300 }}>
-                    Explore our complete directory of specialized neurological treatments.
-                  </p>
-                </div>
-              </FadeIn>
             </div>
           </div>
         </div>

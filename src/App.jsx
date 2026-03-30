@@ -38,10 +38,25 @@ const PageTransition = ({ children }) => {
 function App() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [pageLoaded, setPageLoaded] = useState(false);
+  const [showFcta, setShowFcta] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setPageLoaded(true), 100);
-    return () => clearTimeout(t);
+    
+    const handleScroll = () => {
+      // Trigger interaction when scrolling past the majority of the hero section
+      if (window.scrollY > window.innerHeight * 0.9) {
+        setShowFcta(true);
+      } else {
+        setShowFcta(false);
+      }
+    };
+    
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      clearTimeout(t);
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, []);
 
   return (
@@ -57,8 +72,8 @@ function App() {
 
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       
-      <a href="tel:3184430490" className="fcta">
-        <PhoneCall size={18} /> Call Now
+      <a href="tel:3184430490" className="fcta" style={{ opacity: showFcta ? 1 : 0, pointerEvents: showFcta ? "auto" : "none", transition: "all 0.4s ease" }}>
+        <PhoneCall size={18} /> Request Appointment
       </a>
 
       <PageTransition>

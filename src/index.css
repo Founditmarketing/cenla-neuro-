@@ -133,7 +133,7 @@ a {
   bottom: 24px;
   right: 24px;
   z-index: 90;
-  display: none;
+  display: flex;
   align-items: center;
   gap: 10px;
   background: var(--gold);
@@ -533,7 +533,7 @@ a {
   .sec { padding: 80px 20px; }
   .ph { padding: 140px 20px 70px; }
   .ftg { grid-template-columns: 1fr 1fr; gap: 32px; }
-  .fcta { display: flex !important; }
+  .services-contact button { width: 100%; margin: 12px 0; }
   .dn { display: none !important; }
   .bb { display: flex !important; }
   .ag { grid-template-columns: 1fr !important; gap: 40px !important; }
