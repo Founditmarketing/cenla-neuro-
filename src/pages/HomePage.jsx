@@ -96,10 +96,10 @@ const HomePage = () => {
               </FadeIn>
             </div>
             
-            <div className="hero-mobile-hidden" style={{ flex: "1 1 400px", display: "flex", justifyContent: "center" }}>
-              <FadeIn delay={0.4} direction="left" style={{ width: "100%", display: "flex", justifyContent: "center" }}>
-                <div style={{ position: "relative", width: "100%", maxWidth: 500, aspectRatio: "3/4", borderRadius: 32, overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.3)", border: "1px solid rgba(184,160,100,0.3)" }}>
-                  <img src="/neurocenloherosideimage.png" alt="Neuro Medical Clinic of Cenla" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+            <div className="hero-mobile-hidden" style={{ flex: "0 0 33%", display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
+              <FadeIn delay={0.4} direction="left" style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
+                <div style={{ position: "relative", width: "100%", maxWidth: 420 }}>
+                  <img src="/neurocenloherosideimage.png" alt="Neuro Medical Clinic of Cenla" style={{ display: "block", width: "100%", height: "auto" }} />
                 </div>
               </FadeIn>
             </div>
