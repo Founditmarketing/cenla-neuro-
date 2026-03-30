@@ -73,7 +73,7 @@ function App() {
       <Navigation menuOpen={menuOpen} setMenuOpen={setMenuOpen} />
       
       <a href="tel:3184430490" className="fcta" style={{ opacity: showFcta ? 1 : 0, pointerEvents: showFcta ? "auto" : "none", transition: "all 0.4s ease" }}>
-        <PhoneCall size={18} /> Request Appointment
+        <PhoneCall size={18} /> Request Care
       </a>
 
       <PageTransition>
