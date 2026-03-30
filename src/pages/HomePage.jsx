@@ -260,7 +260,7 @@ const HomePage = () => {
           </div>
           
           <div className="parsley-right" style={{ flex: 1, minWidth: 0 }}>
-            <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "0 40px 40px", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
+            <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "40px calc(50% - 180px)", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
               {services.slice(0, 6).map((s, i) => {
                 const isSpotlight = activeServiceId === s.id;
                 return (
