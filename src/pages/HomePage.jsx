@@ -20,6 +20,29 @@ const HomePage = () => {
   const carouselRef = useRef(null);
   const [hoveredImage, setHoveredImage] = useState(0);
   const [activePhysician, setActivePhysician] = useState(null);
+  const [activeServiceId, setActiveServiceId] = useState("alzheimers");
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveServiceId(entry.target.getAttribute('data-id'));
+          }
+        });
+      },
+      {
+        root: carouselRef.current,
+        rootMargin: '0px',
+        threshold: 0.6,
+      }
+    );
+
+    const cards = carouselRef.current?.querySelectorAll('.service-card-node');
+    cards?.forEach((card) => observer.observe(card));
+
+    return () => observer.disconnect();
+  }, []);
   const expertiseImages = [
     "/neurocenlabrainpic.png",
     "/neurocenlapatient.jpg",
@@ -225,7 +248,7 @@ const HomePage = () => {
               </p>
             </FadeIn>
             <FadeIn delay={0.2}>
-              <div style={{ display: "flex", gap: 16 }}>
+              <div className="parsley-arrow-nav" style={{ display: "flex", gap: 16 }}>
                 <button onClick={() => scrollCarousel('left')} style={{ width: 56, height: 56, borderRadius: "50%", border: "1px solid rgba(0,0,0,0.1)", background: "transparent", display: "flex", alignItems: "center", justifyContent: "center", color: "var(--gold)", cursor: "pointer", transition: "all .3s" }} onMouseEnter={e => { e.currentTarget.style.borderColor = "var(--gold)"; e.currentTarget.style.transform = "scale(1.05)"; }} onMouseLeave={e => { e.currentTarget.style.borderColor = "rgba(0,0,0,0.1)"; e.currentTarget.style.transform = "none"; }}>
                   <ArrowLeft size={24} strokeWidth={1.5} />
                 </button>
@@ -238,31 +261,54 @@ const HomePage = () => {
           
           <div className="parsley-right" style={{ flex: 1, minWidth: 0 }}>
             <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "0 40px 40px", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
-              {services.slice(0, 6).map((s, i) => (
-                <FadeIn key={s.id} delay={Math.min(i * 0.1, 0.4)} style={{ flexShrink: 0 }}>
-                  <div style={{ backgroundColor: "#ffffff", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 20, width: 340, height: 420, padding: 36, display: "flex", flexDirection: "column", cursor: "pointer", transition: "all .3s" }} onClick={() => navigate("/services")} onMouseEnter={e => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.borderColor = "rgba(0,0,0,0.12)"; e.currentTarget.style.boxShadow = "0 20px 40px rgba(0,0,0,0.04)"; e.currentTarget.querySelector('.parsley-link').style.transform = "translateX(4px)"; }} onMouseLeave={e => { e.currentTarget.style.transform = "none"; e.currentTarget.style.borderColor = "rgba(0,0,0,0.06)"; e.currentTarget.style.boxShadow = "none"; e.currentTarget.querySelector('.parsley-link').style.transform = "none"; }}>
-                    <div style={{ width: 64, height: 64, borderRadius: "50%", background: "rgba(184,160,100,0.08)", color: "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 32 }}>
-                      {s.icon}
+              {services.slice(0, 6).map((s, i) => {
+                const isSpotlight = activeServiceId === s.id;
+                return (
+                  <FadeIn key={s.id} delay={Math.min(i * 0.1, 0.4)} style={{ flexShrink: 0 }}>
+                    <div 
+                      className="service-card-node"
+                      data-id={s.id}
+                      style={{ 
+                        backgroundColor: "#ffffff", 
+                        border: isSpotlight ? "2px solid var(--gold)" : "1px solid rgba(0,0,0,0.06)", 
+                        borderRadius: 20, 
+                        width: 360, 
+                        height: 520, 
+                        padding: 36, 
+                        display: "flex", 
+                        flexDirection: "column", 
+                        cursor: "pointer", 
+                        transition: "all .4s cubic-bezier(0.25, 1, 0.5, 1)",
+                        transform: isSpotlight ? "translateY(-8px) scale(1.02)" : "translateY(0) scale(1)",
+                        boxShadow: isSpotlight ? "0 24px 48px rgba(0,0,0,0.08)" : "none",
+                        scrollSnapAlign: "center"
+                      }} 
+                      onClick={() => navigate("/services")}
+                      onMouseEnter={e => {
+                        e.currentTarget.style.borderColor = "var(--gold)";
+                        e.currentTarget.querySelector('.parsley-link').style.transform = "translateX(4px)";
+                      }}
+                      onMouseLeave={e => {
+                        e.currentTarget.style.borderColor = isSpotlight ? "var(--gold)" : "rgba(0,0,0,0.06)";
+                        e.currentTarget.querySelector('.parsley-link').style.transform = "none";
+                      }}
+                    >
+                      <div style={{ width: 64, height: 64, borderRadius: "50%", background: isSpotlight ? "var(--gold)" : "rgba(184,160,100,0.08)", color: isSpotlight ? "var(--navy)" : "var(--gold)", display: "flex", alignItems: "center", justifyContent: "center", marginBottom: 32, transition: "all .4s ease" }}>
+                        {s.icon}
+                      </div>
+                      <h3 style={{ fontFamily: "inherit", fontSize: 24, fontWeight: 600, color: "var(--navy)", marginBottom: 16 }}>{s.name}</h3>
+                      <p style={{ fontSize: 16, color: "var(--text-muted)", lineHeight: 1.6, fontWeight: 300, flex: 1 }}>{s.desc}</p>
+                      <div className="parsley-link" style={{ fontSize: 14, color: "var(--gold)", fontWeight: 600, transition: "transform .3s", marginTop: "auto" }}>
+                        Learn more →
+                      </div>
                     </div>
-                    <h3 style={{ fontFamily: "inherit", fontSize: 24, fontWeight: 600, color: "var(--navy)", marginBottom: 16 }}>{s.name}</h3>
-                    <p style={{ fontSize: 15, color: "var(--text-muted)", lineHeight: 1.6, fontWeight: 300, flex: 1 }}>{s.short}</p>
-                    <div className="parsley-link" style={{ fontSize: 14, color: "var(--gold)", fontWeight: 600, transition: "transform .3s", marginTop: "auto" }}>
-                      Learn more →
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
+                  </FadeIn>
+                );
+              })}
             </div>
           </div>
         </div>
         
-        <FadeIn delay={0.4}>
-          <div style={{ textAlign: "center", marginTop: 40, padding: "0 40px" }}>
-            <button className="bp" onClick={() => navigate("/services")} style={{ background: "var(--navy)", color: "var(--cream)", border: "none", padding: "16px 40px", borderRadius: 30, fontSize: 13, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase", cursor: "pointer", display: "inline-block" }}>
-              VIEW ALL 11 SERVICES →
-            </button>
-          </div>
-        </FadeIn>
       </section>
 
       <section className="sec sd">

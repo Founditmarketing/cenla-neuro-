@@ -472,6 +472,23 @@ a {
 .no-scrollbar {
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
+  scroll-snap-type: x mandatory;
+}
+
+@media(max-width: 968px) {
+  .no-scrollbar {
+    flex-direction: column !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  .service-card-node {
+    width: 100% !important;
+    height: auto !important;
+    scroll-snap-align: none !important; 
+  }
+  .parsley-arrow-nav {
+    display: none !important;
+  }
 }
 
 .hl.scrolled {
