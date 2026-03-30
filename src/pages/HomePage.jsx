@@ -60,7 +60,7 @@ const HomePage = () => {
   return (
     <>
       <div style={{ position: "relative", background: "var(--navy)", overflow: "hidden" }}>
-        <NeuralNetwork />
+        <NeuralNetwork opacity={0.6} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 25% 50%,rgba(42,157,143,.07) 0%,transparent 60%),radial-gradient(ellipse at 75% 25%,rgba(184,160,100,.05) 0%,transparent 50%)" }} />
         <div style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center" }}>
           <div style={{ position: "relative", zIndex: 2, maxWidth: 1280, margin: "0 auto", padding: "160px 40px 100px", width: "100%" }}>
@@ -235,7 +235,7 @@ const HomePage = () => {
         </section>
       </div>
 
-      <section className="parsley-services" style={{ padding: "120px 0", background: "var(--cream-light)", overflow: "hidden" }}>
+      <section className="parsley-services" style={{ padding: "120px 0 0 0", background: "var(--cream-light)", overflow: "hidden" }}>
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "flex-start", maxWidth: 1440, margin: "0 auto" }}>
           <div className="parsley-left" style={{ width: "100%", maxWidth: 460, padding: "0 40px 40px", flexShrink: 0 }}>
             <FadeIn>
@@ -260,7 +260,7 @@ const HomePage = () => {
           </div>
           
           <div className="parsley-right" style={{ flex: 1, minWidth: 0 }}>
-            <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "40px calc(50% - 180px)", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
+            <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "40px calc(50% - 180px) 80px", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
               {services.slice(0, 6).map((s, i) => {
                 const isSpotlight = activeServiceId === s.id;
                 return (
