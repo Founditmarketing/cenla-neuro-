@@ -416,6 +416,7 @@ a {
   .maven-section {
     grid-template-columns: 1fr;
     padding-bottom: 60px;
+    padding-top: 40px !important;
   }
   .maven-left {
     padding: 24px 20px 48px;

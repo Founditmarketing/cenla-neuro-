@@ -20,7 +20,7 @@ const HomePage = () => {
   const carouselRef = useRef(null);
   const [hoveredImage, setHoveredImage] = useState(0);
   const [activePhysician, setActivePhysician] = useState(null);
-  const [activeServiceId, setActiveServiceId] = useState("alzheimers");
+  const [activeServiceId, setActiveServiceId] = useState("card-0");
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -175,7 +175,7 @@ const HomePage = () => {
                       }
                     }}
                   >
-                    <img src={d.img} alt={d.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", transition: "transform 2s ease", transform: isActive ? "scale(1.05)" : "scale(1)" }} loading="lazy" />
+                    <img src={d.img} alt={d.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", transformOrigin: "center 25%", transition: "transform 2s ease", transform: isActive ? "scale(1.05)" : "scale(1)" }} loading="lazy" />
                     
                     {/* Gradient Mask for Readability */}
                     <div style={{ position: "absolute", inset: 0, background: "linear-gradient(to top, rgba(16,24,32,0.95) 0%, rgba(16,24,32,0.6) 20%, transparent 50%)", transition: "opacity 0.6s ease" }} />
@@ -261,13 +261,13 @@ const HomePage = () => {
           
           <div className="parsley-right" style={{ flex: 1, minWidth: 0 }}>
             <div ref={carouselRef} className="no-scrollbar" style={{ display: "flex", gap: 24, overflowX: "auto", padding: "40px calc(50% - 180px) 80px", scrollBehavior: "smooth", WebkitOverflowScrolling: "touch" }}>
-              {services.slice(0, 6).map((s, i) => {
-                const isSpotlight = activeServiceId === s.id;
+              {[...services.slice(0, 6), ...services.slice(0, 6), ...services.slice(0, 6), ...services.slice(0, 6)].map((s, i) => {
+                const isSpotlight = activeServiceId === `card-${i}`;
                 return (
-                  <FadeIn key={s.id} delay={Math.min(i * 0.1, 0.4)} style={{ flexShrink: 0 }}>
+                  <FadeIn key={`${s.id}-${i}`} delay={Math.min(i * 0.1, 0.4)} style={{ flexShrink: 0 }}>
                     <div 
                       className="service-card-node"
-                      data-id={s.id}
+                      data-id={`card-${i}`}
                       style={{ 
                         backgroundColor: "#ffffff", 
                         border: isSpotlight ? "2px solid var(--gold)" : "1px solid rgba(0,0,0,0.06)", 
