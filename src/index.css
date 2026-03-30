@@ -413,6 +413,9 @@ a {
 }
 
 @media(max-width: 968px) {
+  .hero-mobile-hidden {
+    display: none !important;
+  }
   .maven-section {
     grid-template-columns: 1fr;
     padding-bottom: 60px;
