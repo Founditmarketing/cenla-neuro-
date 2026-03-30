@@ -33,8 +33,8 @@ const HomePage = () => {
       },
       {
         root: carouselRef.current,
-        rootMargin: '0px',
-        threshold: 0.6,
+        rootMargin: '0px -49% 0px -49%',
+        threshold: 0,
       }
     );
 
