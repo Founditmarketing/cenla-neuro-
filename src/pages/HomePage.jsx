@@ -98,7 +98,7 @@ const HomePage = () => {
             
             <FadeIn delay={0.4} direction="left" style={{ flex: "1 1 400px", display: "flex", justifyContent: "center" }}>
               <div style={{ position: "relative", width: "100%", maxWidth: 500, aspectRatio: "3/4", borderRadius: 32, overflow: "hidden", boxShadow: "0 24px 64px rgba(0,0,0,0.3)", border: "1px solid rgba(184,160,100,0.3)" }}>
-                <img src="/hero_doctor.jpg" alt="Neuro Medical Clinic of Cenla" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
+                <img src="/neurocenloherosideimage.png" alt="Neuro Medical Clinic of Cenla" style={{ display: "block", width: "100%", height: "100%", objectFit: "cover", objectPosition: "center" }} />
               </div>
             </FadeIn>
           </div>
