@@ -63,46 +63,36 @@ const HomePage = () => {
         <NeuralNetwork opacity={0.6} />
         <div style={{ position: "absolute", inset: 0, background: "radial-gradient(ellipse at 25% 50%,rgba(42,157,143,.07) 0%,transparent 60%),radial-gradient(ellipse at 75% 25%,rgba(184,160,100,.05) 0%,transparent 50%)" }} />
         <div style={{ position: "relative", minHeight: "100vh", display: "flex", alignItems: "center" }}>
-          <div style={{ position: "relative", zIndex: 2, maxWidth: 1280, margin: "0 auto", padding: "160px 40px 100px", width: "100%", display: "flex", flexWrap: "wrap", alignItems: "center", gap: 64 }}>
-            <div style={{ flex: "1 1 540px", maxWidth: 820 }}>
-              <FadeIn delay={0.2}>
-                <div className="ey"><span className="el" />Central Louisiana's Premier Neurology Practice</div>
-              </FadeIn>
-              <FadeIn delay={0.35}>
-                <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(44px,6vw,78px)", fontWeight: 600, color: "var(--cream)", lineHeight: 1.08, maxWidth: 820, marginBottom: 28 }}>
-                  Advanced <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Neurological</em> Care, Close to Home
-                </h1>
-              </FadeIn>
-              <FadeIn delay={0.5}>
-                <p style={{ fontSize: 18, color: "var(--text-light)", maxWidth: 560, lineHeight: 1.75, marginBottom: 44, fontWeight: 300 }}>
-                  Board-certified neurologists providing comprehensive diagnosis, treatment, and groundbreaking clinical research for Central Louisiana and beyond.
-                </p>
-              </FadeIn>
-              <FadeIn delay={0.65}>
-                <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
-                  <button className="bp" onClick={() => navigate("/contact")}>Schedule a Visit →</button>
-                  <button className="bs" onClick={() => navigate("/services")}>Explore Services</button>
-                </div>
-              </FadeIn>
-              <FadeIn delay={0.8}>
-                <div style={{ display: "flex", gap: 48, marginTop: 80, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,.07)", flexWrap: "wrap" }}>
-                  {[["20+", "Years of Excellence"], ["11", "Specialties"], ["1st", "Neuro Research Center in CENLA"]].map(([n, l]) => (
-                    <div key={l}>
-                      <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 44, fontWeight: 600, color: "var(--gold)", lineHeight: 1 }}>{n}</div>
-                      <div style={{ fontSize: 13, color: "var(--text-light)", marginTop: 6, letterSpacing: .5 }}>{l}</div>
-                    </div>
-                  ))}
-                </div>
-              </FadeIn>
+          <div style={{ position: "relative", zIndex: 2, maxWidth: 1280, margin: "0 auto", padding: "160px 40px 100px", width: "100%" }}>
+          <FadeIn delay={0.2}>
+            <div className="ey"><span className="el" />Central Louisiana's Premier Neurology Practice</div>
+          </FadeIn>
+          <FadeIn delay={0.35}>
+            <h1 style={{ fontFamily: "'Playfair Display',serif", fontSize: "clamp(44px,6vw,78px)", fontWeight: 600, color: "var(--cream)", lineHeight: 1.08, maxWidth: 820, marginBottom: 28 }}>
+              Advanced <em style={{ fontStyle: "italic", color: "var(--gold)" }}>Neurological</em> Care, Close to Home
+            </h1>
+          </FadeIn>
+          <FadeIn delay={0.5}>
+            <p style={{ fontSize: 18, color: "var(--text-light)", maxWidth: 560, lineHeight: 1.75, marginBottom: 44, fontWeight: 300 }}>
+              Board-certified neurologists providing comprehensive diagnosis, treatment, and groundbreaking clinical research for Central Louisiana and beyond.
+            </p>
+          </FadeIn>
+          <FadeIn delay={0.65}>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <button className="bp" onClick={() => navigate("/contact")}>Schedule a Visit →</button>
+              <button className="bs" onClick={() => navigate("/services")}>Explore Services</button>
             </div>
-            
-            <div className="hero-mobile-hidden" style={{ flex: "0 0 33%", display: "flex", justifyContent: "flex-end", alignItems: "center" }}>
-              <FadeIn delay={0.4} direction="left" style={{ width: "100%", display: "flex", justifyContent: "flex-end" }}>
-                <div style={{ position: "relative", width: "100%", maxWidth: 420 }}>
-                  <img src="/neurocenloherosideimage.png" alt="Neuro Medical Clinic of Cenla" style={{ display: "block", width: "100%", height: "auto" }} />
+          </FadeIn>
+          <FadeIn delay={0.8}>
+            <div style={{ display: "flex", gap: 48, marginTop: 80, paddingTop: 40, borderTop: "1px solid rgba(255,255,255,.07)", flexWrap: "wrap" }}>
+              {[["20+", "Years of Excellence"], ["11", "Specialties"], ["1st", "Neuro Research Center in CENLA"]].map(([n, l]) => (
+                <div key={l}>
+                  <div style={{ fontFamily: "'Playfair Display',serif", fontSize: 44, fontWeight: 600, color: "var(--gold)", lineHeight: 1 }}>{n}</div>
+                  <div style={{ fontSize: 13, color: "var(--text-light)", marginTop: 6, letterSpacing: .5 }}>{l}</div>
                 </div>
-              </FadeIn>
+              ))}
             </div>
+          </FadeIn>
           </div>
         </div>
       </div>
