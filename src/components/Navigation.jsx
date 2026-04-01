@@ -64,8 +64,8 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
           right: 0,
           zIndex: 100,
           padding: scrolled ? "10px 0" : "18px 0",
-          background: scrolled || cp !== "home" ? "rgba(10,22,40,.96)" : "transparent",
-          backdropFilter: scrolled || cp !== "home" ? "blur(20px)" : "none",
+          background: scrolled || (cp !== "home" && cp !== "services") ? "rgba(10,22,40,.96)" : "transparent",
+          backdropFilter: scrolled || (cp !== "home" && cp !== "services") ? "blur(20px)" : "none",
           borderBottom: scrolled ? "1px solid rgba(184,160,100,.12)" : "none",
           transition: "all .4s cubic-bezier(.16,1,.3,1)"
         }}

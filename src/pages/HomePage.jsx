@@ -170,9 +170,7 @@ const HomePage = () => {
                     onMouseEnter={() => window.innerWidth > 968 && setActivePhysician(i)} 
                     onMouseLeave={() => window.innerWidth > 968 && setActivePhysician(null)}
                     onClick={() => {
-                      if (window.innerWidth <= 968) {
-                        navigate("/physicians");
-                      }
+                      navigate(`/physicians#${d.name.split(',')[0].replace(/\s+/g, '-').toLowerCase()}`);
                     }}
                   >
                     <img src={d.img} alt={d.name} style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", transformOrigin: "center 25%", transition: "transform 2s ease", transform: isActive ? "scale(1.05)" : "scale(1)" }} loading="lazy" />
@@ -198,7 +196,7 @@ const HomePage = () => {
                             <button 
                               onClick={(e) => {
                                 e.stopPropagation();
-                                navigate("/physicians");
+                                navigate(`/physicians#${d.name.split(',')[0].replace(/\s+/g, '-').toLowerCase()}`);
                               }}
                               style={{ 
                                 marginTop: 8, 

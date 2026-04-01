@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import NeuralNetwork from '../components/NeuralNetwork';
 import FadeIn from '../components/FadeIn';
 import { physicians } from '../data';
@@ -29,6 +30,23 @@ const DocBio = ({ d, dark }) => (
 
 const PhysiciansPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const element = document.getElementById(id);
+      if (element) {
+        setTimeout(() => {
+          const yOffset = -100;
+          const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+          window.scrollTo({ top: y, behavior: 'smooth' });
+        }, 100);
+      }
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [location.hash]);
 
   return (
     <>
@@ -47,14 +65,14 @@ const PhysiciansPage = () => {
       </div>
       
       {physicians.map((d, i) => (
-        <section key={d.name} className={`sec ${i % 2 === 0 ? "sc" : "sd"}`}>
+        <section key={d.name} id={d.name.split(',')[0].replace(/\s+/g, '-').toLowerCase()} className={`sec ${i % 2 === 0 ? "sc" : "sd"}`}>
           <div className="si">
             <div style={{ display: "grid", gridTemplateColumns: i % 2 === 0 ? "380px 1fr" : "1fr 380px", gap: 60, alignItems: "center" }} className="dg">
               {i % 2 === 0 ? (
                 <>
                   <FadeIn direction="right">
                     <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,.15)" }}>
-                      <img src={d.img} alt={d.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }} loading="lazy" />
+                      <img src={d.profileImg || d.img} alt={d.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }} loading="lazy" />
                     </div>
                   </FadeIn>
                   <DocBio d={d} dark={false} />
@@ -64,7 +82,7 @@ const PhysiciansPage = () => {
                   <DocBio d={d} dark={true} />
                   <FadeIn direction="left">
                     <div style={{ borderRadius: 20, overflow: "hidden", boxShadow: "0 20px 60px rgba(0,0,0,.3)" }}>
-                      <img src={d.img} alt={d.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }} loading="lazy" />
+                      <img src={d.profileImg || d.img} alt={d.name} style={{ width: "100%", aspectRatio: "3/4", objectFit: "cover", objectPosition: "top" }} loading="lazy" />
                     </div>
                   </FadeIn>
                 </>
