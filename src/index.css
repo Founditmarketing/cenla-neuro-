@@ -528,11 +528,16 @@ a {
   margin-top: 0;
 }
 
+.npf-frame {
+  height: 1500px;
+}
+
 @media(max-width: 968px) {
   .h-inner {
     align-items: flex-start !important;
     padding: 0 20px !important;
   }
+  .npf-frame { height: 1150px; }
   .hl {
     height: 95px;
   }
@@ -553,4 +558,5 @@ a {
 
 @media(max-width: 600px) {
   .ftg { grid-template-columns: 1fr; }
+  .npf-frame { height: 900px; }
 }

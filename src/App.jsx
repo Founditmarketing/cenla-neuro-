@@ -9,6 +9,7 @@ import ServicesPage from './pages/ServicesPage';
 import ServiceDetailPage from './pages/ServiceDetailPage';
 import ContactPage from './pages/ContactPage';
 import ClinicalStudiesPage from './pages/ClinicalStudiesPage';
+import NewPatientFormsPage from './pages/NewPatientFormsPage';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -84,6 +85,7 @@ function App() {
           <Route path="/services/:id" element={<ServiceDetailPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/clinical-studies" element={<ClinicalStudiesPage />} />
+          <Route path="/new-patient-forms" element={<NewPatientFormsPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </PageTransition>

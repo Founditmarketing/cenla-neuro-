@@ -52,7 +52,8 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
   const cp = route.startsWith("/services") ? "services"
     : route.startsWith("/physicians") ? "physicians"
     : route.startsWith("/contact") ? "contact"
-    : route.startsWith("/clinical") ? "clinical" : "home";
+    : route.startsWith("/clinical") ? "clinical"
+    : route.startsWith("/new-patient-forms") ? "forms" : "home";
 
   return (
     <>
@@ -80,6 +81,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
             <NavLink onClick={() => navigate("/physicians")} active={cp === "physicians"}>Physicians</NavLink>
             <NavLink onClick={() => navigate("/services")} active={cp === "services"}>Services</NavLink>
             <NavLink onClick={() => navigate("/clinical-studies")} active={cp === "clinical"}>Research</NavLink>
+            <NavLink onClick={() => navigate("/new-patient-forms")} active={cp === "forms"}>Patient Forms</NavLink>
             <button
               onClick={() => navigate("/contact")}
               className="bp"
@@ -113,7 +115,7 @@ const Navigation = ({ menuOpen, setMenuOpen }) => {
         </div>
 
         <div style={{ flex: 1, overflowY: "auto", padding: "12px 24px", display: "flex", flexDirection: "column" }}>
-          {[{ l: "Home", p: "/" }, { l: "Physicians", p: "/physicians" }, { l: "Comprehensive Services", p: "/services" }, { l: "Clinical Research", p: "/clinical-studies" }].map(i => (
+          {[{ l: "Home", p: "/" }, { l: "Physicians", p: "/physicians" }, { l: "Comprehensive Services", p: "/services" }, { l: "Clinical Research", p: "/clinical-studies" }, { l: "New Patient Forms", p: "/new-patient-forms" }].map(i => (
             <button 
               key={i.p} 
               className="ml" 

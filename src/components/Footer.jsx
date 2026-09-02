@@ -24,8 +24,8 @@ const Footer = () => {
           </div>
           <div>
             <div className="fth">Patients</div>
-            <a className="ftl" href="https://neurocenla.com/new-patient-forms/" target="_blank" rel="noopener noreferrer">New Patient Forms</a>
-            <a className="ftl" href="https://neurocenla.com/patient-portal/" target="_blank" rel="noopener noreferrer">Patient Portal</a>
+            <button className="ftl" onClick={() => navigate("/new-patient-forms")}>New Patient Forms</button>
+            <a className="ftl" href="https://login.healthfusion.com/?ct=yhf" target="_blank" rel="noopener noreferrer">Patient Portal</a>
             <button className="ftl" onClick={() => navigate("/contact")}>Contact Us</button>
           </div>
           <div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import NeuralNetwork from '../components/NeuralNetwork';
 import FadeIn from '../components/FadeIn';
 
@@ -79,8 +80,8 @@ const ContactPage = () => {
                 <div>
                   <div style={{ fontSize: 12, fontWeight: 600, letterSpacing: 1.5, textTransform: "uppercase", color: "var(--gold)", marginBottom: 12 }}>Quick Links</div>
                   <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
-                    <a href="https://neurocenla.com/new-patient-forms/" target="_blank" rel="noopener noreferrer" style={{ fontSize: 15, color: "var(--text-dark)", transition: "color .3s" }} onMouseEnter={e => e.target.style.color = "var(--gold)"} onMouseLeave={e => e.target.style.color = "var(--text-dark)"}>New Patient Forms ↗</a>
-                    <a href="https://neurocenla.com/patient-portal/" target="_blank" rel="noopener noreferrer" style={{ fontSize: 15, color: "var(--text-dark)", transition: "color .3s" }} onMouseEnter={e => e.target.style.color = "var(--gold)"} onMouseLeave={e => e.target.style.color = "var(--text-dark)"}>Patient Portal ↗</a>
+                    <Link to="/new-patient-forms" style={{ fontSize: 15, color: "var(--text-dark)", transition: "color .3s", textDecoration: "none" }} onMouseEnter={e => e.target.style.color = "var(--gold)"} onMouseLeave={e => e.target.style.color = "var(--text-dark)"}>New Patient Forms →</Link>
+                    <a href="https://login.healthfusion.com/?ct=yhf" target="_blank" rel="noopener noreferrer" style={{ fontSize: 15, color: "var(--text-dark)", transition: "color .3s" }} onMouseEnter={e => e.target.style.color = "var(--gold)"} onMouseLeave={e => e.target.style.color = "var(--text-dark)"}>Patient Portal ↗</a>
                   </div>
                 </div>
               </div>
